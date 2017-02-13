@@ -1,0 +1,21 @@
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <% @concerts.each do |concert| %>
+    
+    <%= concert.at_css(".headliners").text %>
+    <%= concert.at_css(".dates").text %>
+    <%= concert.at_css(".doors").text %>
+    <% if !concert.at_css(".custom").nil? %>
+      <a href="<%=concert.at_css(".ticket-price h3 a")[:href]%>"><%= concert.at_css(".price-range").text.strip %></a>
+    <% else %>
+      <%= "Sold out" %>
+    <% end %>
+      <br>
+  <% end %>
+</body>
+</html>
